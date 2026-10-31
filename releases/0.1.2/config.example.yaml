@@ -1,0 +1,39 @@
+# appsense-ops settings. Copy to config.yaml (git-ignored), edit, and point
+# APPSENSE_OPS_CONFIG at it. Keys are the APPSENSE_OPS_* env var names without
+# the prefix, lowercased; an env var always overrides the same key here.
+#
+# NOT allowed in this file (set them in the environment instead):
+#   password             -> APPSENSE_OPS_PASSWORD
+#   allow_insecure_base  -> APPSENSE_OPS_ALLOW_INSECURE_BASE (test-only)
+
+profile: qa-bob
+opaque_id: 0            # QA service user's companyId
+
+# Credentials: read email + password from the Hermes vault login whose origin is
+# https://api.qa.appsensesolutions.com (add it with `hermes vault add --kind login`).
+# Use `credential_source: env` instead to take APPSENSE_OPS_EMAIL/PASSWORD from the env.
+credential_source: hermes_vault
+# vault_label: Appsense QA   # only needed if several logins share that origin
+# vault_dir: C:/Users/<you>/AppData/Local/hermes/vault   # default: auto-detected
+
+allowlist:              # omit or leave empty for all tools
+  - billing_claims_summary
+  - billing_claims_by_status
+  - billing_eras_by_date
+  - billing_batch_summary
+  - billing_rejection_messages
+  - billing_remittance_search
+  - pat_visits_count
+  - pat_visits_window
+  - health_version
+
+max_rows: 50
+timeout_s: 30
+kill_switch: false
+# audit_path: ~/.appsense-ops/audit.jsonl
+# agent: appsense-ops
+
+# QA endpoints (defaults shown; host must stay api.qa.appsensesolutions.com)
+# auth_base: https://api.qa.appsensesolutions.com/auth/api
+# billing_base: https://api.qa.appsensesolutions.com/billingv2/api
+# pat_base: https://api.qa.appsensesolutions.com/pat/api
