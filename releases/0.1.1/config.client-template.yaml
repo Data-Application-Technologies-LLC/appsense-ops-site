@@ -1,0 +1,43 @@
+# appsense-ops client configuration — TEMPLATE
+# Copy to config.yaml on the client machine and fill every <ANGLE_BRACKET> value.
+#
+# Hard rules (enforced by the server, it will refuse to start otherwise):
+#   * `password` and `allow_insecure_base` are FORBIDDEN in this file.
+#     Credentials come from the machine's Hermes vault (see below).
+#   * Endpoints are pinned to the QA gateway (api.qa.appsensesolutions.com);
+#     do NOT add auth_base/billing_base/pat_base here.
+#   * An environment variable always overrides the same key in this file.
+
+# ── Identity ────────────────────────────────────────────────────────────
+profile: <CLIENT_SHORT_NAME>      # e.g. acme — shown in health_version and audit rows
+opaque_id: <CLIENT_COMPANY_ID>    # int — the client's Appsense companyId (Login opaqueId)
+
+# ── Credentials (Hermes vault — MANDATORY per deployment decision) ─────
+# Before first start, on this machine run:
+#   hermes vault add --kind login
+# and store the client's QA service account with origin
+#   https://api.qa.appsensesolutions.com
+credential_source: hermes_vault
+# vault_label: <CLIENT_NAME> QA   # uncomment ONLY if several logins share the QA origin
+# vault_dir: C:/Users/<USER>/AppData/Local/hermes/vault   # leave commented: auto-detected
+
+# ── Tools (least privilege — DELETE any line the client does not need) ──
+allowlist:
+  - health_version
+  - pat_visits_count
+  - pat_visits_window
+  - billing_claims_summary
+  - billing_claims_by_status
+  - billing_eras_by_date
+  - billing_batch_summary
+  - billing_rejection_messages
+  - billing_remittance_search
+
+# ── Limits ──────────────────────────────────────────────────────────────
+max_rows: 50          # server-side row cap (1–500)
+timeout_s: 30         # per-request timeout
+kill_switch: false    # set APPSENSE_OPS_KILL_SWITCH=1 in the env to disable all tools
+
+# ── Audit (metadata only, no PHI) ───────────────────────────────────────
+# Default is ~/.appsense-ops/audit.jsonl; uncomment to pin a location:
+# audit_path: C:/appsense-ops/audit.jsonl
