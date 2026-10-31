@@ -1,2 +1,15 @@
-
-{"latest": "", "releases": []}
+{
+  "latest": "0.1.1",
+  "releases": [
+    {
+      "version": "0.1.1",
+      "date": "2026-10-31",
+      "commit": "96a2766f046ce4b5af756b9314cdd933fdb4cc9c",
+      "assets": {
+        "wheel": "releases/0.1.1/appsense_ops-0.1.1-py3-none-any.whl",
+        "bundle": "releases/0.1.1/appsense_ops-0.1.1-bundle.zip",
+        "sha256": "releases/0.1.1/SHA256SUMS.txt"
+      }
+    }
+  ]
+}
