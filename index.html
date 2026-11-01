@@ -24,9 +24,11 @@
 </head>
 <body>
   <h1>appsense-ops</h1>
-  <div class="sub">Read-only Appsense QA tools — MCP server for local computers. Download the bundle, run <code>INSTALL.bat</code>, follow <code>DEPLOY.md</code>.</div>
-  <div class="warn"><strong>Before you install:</strong> you need a provisioned service account and the machine's Hermes vault login (origin
-    <code>https://api.qa.appsensesolutions.com</code>). The server talks to the Appsense <strong>QA</strong> environment only and is read-only.</div>
+  <div class="sub">Read-only Appsense tools — MCP server for local computers. The Appsense environment (QA by default; prod/dev since v0.2.0) is selected in <code>config.yaml</code>. Download the bundle, run <code>INSTALL.bat</code>, follow <code>DEPLOY.md</code>.</div>
+  <div class="warn"><strong>Before you install:</strong> you need a provisioned service account and the machine's Hermes vault login bound to the
+    origin of the environment you will use (<code>https://api.qa.appsensesolutions.com</code> for QA,
+    <code>https://api.appsensesolutions.com</code> for prod). The server is strictly read-only; it talks to the
+    Appsense environment selected in <code>config.yaml</code> (QA by default; prod/dev since v0.2.0).</div>
   <div id="releases">Loading releases…</div>
   <div id="err"></div>
 
