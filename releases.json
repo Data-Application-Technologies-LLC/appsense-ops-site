@@ -1,6 +1,16 @@
 {
-  "latest": "0.1.2",
+  "latest": "0.2.0",
   "releases": [
+    {
+      "version": "0.2.0",
+      "date": "2026-11-01",
+      "commit": "75b7c5b7590214a6db4e1e745082fb3229f915e7",
+      "assets": {
+        "wheel": "releases/0.2.0/appsense_ops-0.2.0-py3-none-any.whl",
+        "bundle": "releases/0.2.0/appsense_ops-0.2.0-bundle.zip",
+        "sha256": "releases/0.2.0/SHA256SUMS.txt"
+      }
+    },
     {
       "version": "0.1.2",
       "date": "2026-10-31",
